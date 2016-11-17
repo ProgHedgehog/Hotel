@@ -1,0 +1,4 @@
+insert into room(roomID, Name, Description, Status, Price, TypeName) values(0, 'room1','эконом','свободен',1200.0,'Однокомнатный');
+insert into room(roomID, Name, Description, Status, Price, TypeName) values(1, 'room2','эконом','свободен',1300.0,'Двухкомнатный');
+insert into room(roomID, Name, Description, Status, Price, TypeName) values(2, 'room3','эконом','свободен',1500.0,'Трёхкомнатный');
+insert into room(roomID, Name, Description, Status, Price, TypeName) values(3, 'room4','эконом','свободен',1000.0,'Четырёхкомнатный');

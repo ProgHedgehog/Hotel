@@ -1,0 +1,2 @@
+insert into AdditionalService(AdditionalServiceID, Name, Description,Price) values(0, 'Взбить подушечки','В течение 15 минуть горничная взбивает вам каждую подушечку в номере',1200.0);
+insert into AdditionalService(AdditionalServiceID, Name, Description,Price) values(1, 'Шампанское в номер','По требованию вам приносят бутылку Дом Периньон урожая 1965 года',15000.0);

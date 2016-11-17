@@ -1,0 +1,5 @@
+insert into Client (ClientID,FIO,Passport,Number) values (0,"Пётр Пупкин", "154572","12345678")
+insert into Client (ClientID,FIO,Passport,Number) values (1,"Валентин Петренко", "765432","12345677")
+insert into Client (ClientID,FIO,Passport,Number) values (2,"Александр Анатолиевич", "157906","12345676")
+insert into Client (ClientID,FIO,Passport,Number) values (3,"Владимир Владимирович", "345678","12345675")
+insert into Client (ClientID,FIO,Passport,Number) values (4,"Дмитрий Анатолиевич", "567893","12345674")

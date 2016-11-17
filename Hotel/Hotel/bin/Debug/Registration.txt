@@ -1,0 +1,1 @@
+insert into Registration(ID, Login, Password) Values(0,'Admin','Admin')
