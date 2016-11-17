@@ -40,3 +40,6 @@ C:\Hotel\Hotel\obj\Debug\Hotel.Rooms.resources
 C:\Hotel\Hotel\obj\Debug\Hotel.Properties.Resources.resources
 C:\Hotel\Hotel\obj\Debug\Hotel.RoomsChange.resources
 C:\Hotel\Hotel\obj\Debug\Hotel.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\bin\Debug\Hotel.exe.config
+C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.exe
+C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.pdb
