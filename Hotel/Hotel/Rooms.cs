@@ -44,48 +44,15 @@ namespace Hotel
         }
         private void NextBtn_Click(object sender, EventArgs e)
         {
-            //Hide();
             this.Close();
-            Clients cl = new Clients("From_Rooms");
+            Clients cl = new Clients("From_Rooms", int.Parse(Request_Data[0]));
             cl.Show();
         }
 
         private void Addbtn_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            string line;
-            openFileDialog1.InitialDirectory = Environment.CurrentDirectory;
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
-                    {
-                        using (myStream)
-                        {
-                            StreamReader file = new StreamReader(openFileDialog1.FileName);
-                            while ((line = file.ReadLine()) != null)
-                            {
-                                sql.Open();
-                                SQLiteCommand command_insert = new SQLiteCommand(line, sql);
-                                command_insert.ExecuteNonQuery();
-                                sql.Close();
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
-            }
-            //RoomsChange rc = new RoomsChange(ID);
-            //rc.Show();
+            RoomsAdd radd = new RoomsAdd();
+            radd.Show();
         }
 
         private void Editbtn_Click(object sender, EventArgs e)
@@ -93,6 +60,16 @@ namespace Hotel
             RoomsChange rc = new RoomsChange(Request_Data);
             rc.Show();
             this.Close();
+            if (rc == null)
+            {
+                rc.MdiParent = this;
+                rc.Show();
+            }
+            else
+            {
+                rc.Show();
+                rc.Activate();
+            }
         }
 
         private void RoomsdataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -100,6 +77,7 @@ namespace Hotel
             Request_Data.Clear();
             Editbtn.Enabled = true;
             Deletebtn.Enabled = true;
+            Request_Data.Add(RoomsdataGridView.Rows[e.RowIndex].Cells["RoomID"].Value.ToString());
             Request_Data.Add(RoomsdataGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString());
             Request_Data.Add(RoomsdataGridView.Rows[e.RowIndex].Cells["Description"].Value.ToString());
             Request_Data.Add(RoomsdataGridView.Rows[e.RowIndex].Cells["Price"].Value.ToString());
@@ -157,6 +135,11 @@ namespace Hotel
                 e.Cancel = true;
                 Hide();
             }
+        }
+
+        private void Rooms_Activated(object sender, EventArgs e)
+        {
+            ShowDB("Room");
         }
     }
 }

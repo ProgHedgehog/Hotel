@@ -104,6 +104,7 @@
             this.MakeReportbtn.TabIndex = 10;
             this.MakeReportbtn.Text = "Создать отчет";
             this.MakeReportbtn.UseVisualStyleBackColor = true;
+            this.MakeReportbtn.Click += new System.EventHandler(this.MakeReportbtn_Click);
             // 
             // BackBtn
             // 

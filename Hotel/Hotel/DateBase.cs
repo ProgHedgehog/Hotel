@@ -23,7 +23,7 @@ namespace Hotel
             SQLiteCommand AdditionalService = new SQLiteCommand("create table if not exists AdditionalService(AdditionalServiceID INTEGER PRIMARY KEY, Name VARCHAR, Description VARCHAR, Price DOUBLE)", sql);
             SQLiteCommand Contract = new SQLiteCommand("create table if not exists Contract(ContractID INTEGER PRIMARY KEY, Data DATATIME, ArrivalDate DATATIME, DepartureDate DATATIME, Sum DOUBLE, RoomID INTEGER, ClientID INTEGER,BookID INTEGER, CONSTRAINT Contract_Roomfk FOREIGN KEY (RoomID) REFERENCES Room(RoomID),CONSTRAINT Contract_Clientfk FOREIGN KEY (ClientID) REFERENCES Client(ClientID),CONSTRAINT Contract_Bookfk FOREIGN KEY (BookID) REFERENCES Book(BookID))", sql);
             SQLiteCommand TablePart = new SQLiteCommand("create table if not exists TablePart(TablePartID INTEGER PRIMARY KEY, Amount INTEGER, Sum DOUBLE, AdditionalServiceID INTEGER, ContractID INTEGER, CONSTRAINT TablePart_AdditionalServicefk FOREIGN KEY (AdditionalServiceID) REFERENCES AdditionalService(AdditionalServiceID), CONSTRAINT TablePart_Contractfk FOREIGN KEY (ContractID) REFERENCES Contract(ContractID))", sql);
-            SQLiteCommand Registeration = new SQLiteCommand("create table if not exists Registration(ID INTEGER PRIMARY KEY, Login Varchar, Password Varchar)", sql);
+            SQLiteCommand Registeration = new SQLiteCommand("create table if not exists Registration(ID INTEGER PRIMARY KEY, Login Varchar, Password Varchar, Role Varchar)", sql);
             sql.Open();
             Client.ExecuteNonQuery();
             Type.ExecuteNonQuery();

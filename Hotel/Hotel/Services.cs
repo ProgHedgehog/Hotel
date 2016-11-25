@@ -54,7 +54,7 @@ namespace Hotel
         private void BackBtn_Click(object sender, EventArgs e)
         {
             Hide();
-            Clients cl = new Clients("From_Rooms");
+            Clients cl = new Clients("From_Rooms",0);
             cl.Show();
         }
 

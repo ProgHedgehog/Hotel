@@ -35,6 +35,7 @@
             this.Passwordtb = new System.Windows.Forms.TextBox();
             this.Registration_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.Exitbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EnterBtn
@@ -101,11 +102,22 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Авторизация";
             // 
+            // Exitbtn
+            // 
+            this.Exitbtn.Location = new System.Drawing.Point(349, 257);
+            this.Exitbtn.Name = "Exitbtn";
+            this.Exitbtn.Size = new System.Drawing.Size(165, 35);
+            this.Exitbtn.TabIndex = 7;
+            this.Exitbtn.Text = "Выйти";
+            this.Exitbtn.UseVisualStyleBackColor = true;
+            this.Exitbtn.Click += new System.EventHandler(this.Exitbtn_Click);
+            // 
             // Authorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 317);
+            this.Controls.Add(this.Exitbtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Registration_btn);
             this.Controls.Add(this.Passwordtb);
@@ -133,5 +145,6 @@
         private System.Windows.Forms.TextBox Passwordtb;
         private System.Windows.Forms.Button Registration_btn;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Exitbtn;
     }
 }

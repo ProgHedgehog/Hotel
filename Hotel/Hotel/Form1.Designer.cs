@@ -36,6 +36,7 @@
             this.roomsWorkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,8 @@
             this.authorizationToolStripMenuItem,
             this.clientsWorkToolStripMenuItem,
             this.roomsWorkToolStripMenuItem,
-            this.documentationToolStripMenuItem});
+            this.documentationToolStripMenuItem,
+            this.adminToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(835, 24);
@@ -107,6 +109,13 @@
             this.documentationToolStripMenuItem.Text = "Документация";
             this.documentationToolStripMenuItem.Click += new System.EventHandler(this.documentationToolStripMenuItem_Click);
             // 
+            // adminToolStripMenuItem
+            // 
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,15 +134,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem authorizationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientsWorkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem roomsWorkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem populatesClientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem populatesClientsToolStripMenuItem;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.ToolStripMenuItem clientsWorkToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
     }
 }
 

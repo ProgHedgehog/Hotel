@@ -161,7 +161,7 @@
             this.dateTimePickerFinish.Name = "dateTimePickerFinish";
             this.dateTimePickerFinish.Size = new System.Drawing.Size(125, 20);
             this.dateTimePickerFinish.TabIndex = 29;
-            this.dateTimePickerFinish.Value = new System.DateTime(2016, 5, 25, 0, 0, 0, 0);
+            this.dateTimePickerFinish.Value = new System.DateTime(2016, 11, 24, 0, 0, 0, 0);
             // 
             // dateTimePickerStart
             // 
@@ -169,7 +169,7 @@
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(125, 20);
             this.dateTimePickerStart.TabIndex = 28;
-            this.dateTimePickerStart.Value = new System.DateTime(2016, 5, 25, 21, 59, 46, 0);
+            this.dateTimePickerStart.Value = new System.DateTime(2016, 11, 24, 0, 0, 0, 0);
             // 
             // RoomsdataGridView
             // 
@@ -208,6 +208,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Rooms";
             this.Text = "Номера";
+            this.Activated += new System.EventHandler(this.Rooms_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Rooms_FormClosing);
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

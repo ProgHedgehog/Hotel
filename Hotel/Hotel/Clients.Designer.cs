@@ -48,6 +48,7 @@
             // 
             // SettleBtn
             // 
+            this.SettleBtn.Enabled = false;
             this.SettleBtn.Location = new System.Drawing.Point(498, 198);
             this.SettleBtn.Name = "SettleBtn";
             this.SettleBtn.Size = new System.Drawing.Size(193, 45);
@@ -58,6 +59,7 @@
             // 
             // BookBtn
             // 
+            this.BookBtn.Enabled = false;
             this.BookBtn.Location = new System.Drawing.Point(498, 277);
             this.BookBtn.Name = "BookBtn";
             this.BookBtn.Size = new System.Drawing.Size(193, 45);

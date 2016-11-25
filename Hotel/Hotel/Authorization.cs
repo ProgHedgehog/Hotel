@@ -13,6 +13,8 @@ namespace Hotel
 {
     public partial class Authorization : Form
     {
+        public string current_login;
+        public string currnet_role;
         SQLiteConnection sql = new SQLiteConnection(@"Data Source=base.sqlite;Version=3");
         public Authorization()
         {
@@ -22,30 +24,29 @@ namespace Hotel
         private void Registration_btn_Click(object sender, EventArgs e)
         {
             sql.Open();
-            SQLiteCommand check_if_registered = new SQLiteCommand("Drop table Registration", sql);
+            SQLiteCommand check_if_registered = new SQLiteCommand("Select Login from Registration where Login ='"+Logintb.Text+"'", sql);
             check_if_registered.ExecuteNonQuery();
-            //SQLiteDataReader reader = check_if_registered.ExecuteReader();
+            SQLiteDataReader reader = check_if_registered.ExecuteReader();
 
-            //while (reader.Read())
-            //{
-            //    c = reader[0] + "";
-            //}
-            //if (c == "")
-            //{
-            //    string register = "INSERT INTO Registration (ID, Login, Password) Values(null, '" + Logintb.Text + "', '" + Passwordtb.Text + "')";
-            //    SQLiteCommand registeration_comand = new SQLiteCommand(register, sql);
-            //    registeration_comand.ExecuteNonQuery();
-            //    sql.Close();
-            //    if (MessageBox.Show("Вы зарегистрированы") == DialogResult.OK)
-            //    {
-            //        this.Close();
-            //    }
-            //}
-        
-            //else
-            //{
-            //    MessageBox.Show("Пользователь с логином '" + c + "' уже зарегистрирован в системе");
-            //}
+            while (reader.Read())
+            {
+                c = reader[0] + "";
+            }
+            if (c != "")
+            {
+                string register = "update Registration set password='"+Passwordtb.Text+"' where login='"+Logintb.Text+"'";
+                SQLiteCommand registeration_comand = new SQLiteCommand(register, sql);
+                registeration_comand.ExecuteNonQuery();
+                sql.Close();
+                if (MessageBox.Show("Вы зарегистрированы") == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пользователь с этим логином не зарегистрирован в системе. Обратитесь к администратору");
+            }
             sql.Close();
         } 
 
@@ -53,13 +54,20 @@ namespace Hotel
         {
             string login = "";
             sql.Open();
-            SQLiteCommand check_if_registered = new SQLiteCommand("SELECT Login FROM Users WHERE Password = '" + Passwordtb.Text + "' AND Login = '" + Logintb.Text + "'", sql);
+            SQLiteCommand check_if_registered = new SQLiteCommand("SELECT Login FROM Registration WHERE Password = '" + Passwordtb.Text + "' AND Login = '" + Logintb.Text + "'", sql);
             check_if_registered.ExecuteNonQuery();
             SQLiteDataReader reader = check_if_registered.ExecuteReader();
-
             while (reader.Read())
             {
                 login = reader[0] + "";
+            }
+            string role = "";
+            check_if_registered = new SQLiteCommand("SELECT role FROM Registration WHERE Password = '" + Passwordtb.Text + "' AND Login = '" + Logintb.Text + "'", sql);
+            check_if_registered.ExecuteNonQuery();
+            reader = check_if_registered.ExecuteReader();
+            while (reader.Read())
+            {
+                role = reader[0] + "";
             }
             if (login == "")
             {
@@ -72,10 +80,21 @@ namespace Hotel
                     Close();
                 }
             }
+            current_login = login;
+            currnet_role = role;
             sql.Close();
         }
 
         private void Authorization_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1 main = this.Owner as Form1;
+            if (currnet_role == "Менеджер")
+            {
+               main.menuStrip1.Items.
+            }
+        }
+
+        private void Exitbtn_Click(object sender, EventArgs e)
         {
 
         }

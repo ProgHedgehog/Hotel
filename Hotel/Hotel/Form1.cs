@@ -12,7 +12,6 @@ namespace Hotel
 {
     public partial class Form1 : Form
     {
-        string authorisation_status = "";
         Authorization au;
         public Form1()
         {
@@ -23,7 +22,8 @@ namespace Hotel
             au = new Authorization();
             au.MdiParent = this;
             au.Dock = DockStyle.Fill;
-            au.Show();
+            au.Show();            
+
         }
 
         
@@ -33,6 +33,7 @@ namespace Hotel
             {
                 au = new Authorization();
                 au.MdiParent = this;
+                au.Owner = this;
                 au.Dock = DockStyle.Fill;
                 au.Show();
             }
@@ -48,7 +49,7 @@ namespace Hotel
         {
             if (cl == null)
             {
-                cl = new Clients("From_Form1");
+                cl = new Clients("From_Form1",0);
                 cl.MdiParent = this;
                 cl.Dock = DockStyle.Fill;
                 cl.Show();
@@ -131,6 +132,22 @@ namespace Hotel
         private void roomsWorkToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+        AdminPanel adm;
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (adm == null)
+            {
+                adm = new AdminPanel();
+                adm.MdiParent = this;
+                adm.Dock = DockStyle.Fill;
+                adm.Show();
+            }
+            else
+            {
+                adm.Show();
+                adm.Activate();
+            }
         }
     }
 }

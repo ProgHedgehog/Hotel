@@ -17,9 +17,11 @@ namespace Hotel
         CommonFunctions function = new CommonFunctions();
         public List<string> Request_Data = new List<string>();
         public string Current_Flag;
-        public Clients(string flag)
+        public int Selected_Room_ID;
+        public Clients(string flag, int room_id)
         {
             Current_Flag = flag;
+            Selected_Room_ID = room_id;
             if (flag == "From_Form1")
             {
                 InitializeComponent();
@@ -61,7 +63,7 @@ namespace Hotel
         private void BookBtn_Click(object sender, EventArgs e)
         {
             Hide();
-            Booking bk = new Booking();
+            Booking bk = new Booking(Selected_Room_ID,Convert.ToInt32(ID_tb.Text));
             bk.Show();
         }
 

@@ -1,1 +1,1 @@
-insert into Registration(ID, Login, Password) Values(0,'Admin','Admin')
+insert into Registration(ID, Login, Password, Role) Values(0,'admin','admin','superuser')
