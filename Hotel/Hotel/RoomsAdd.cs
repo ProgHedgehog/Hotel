@@ -39,13 +39,20 @@ namespace Hotel
         }
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            sql.Open();
-            SQLiteCommand sqlcon = new SQLiteCommand(sql);
-            sqlcon.CommandText = @"insert into room(roomID, Name, Description, Status, Price, TypeName) values(null, '" + Convert.ToString(Nametb.Text) + "', '" + Convert.ToString(Descriptiontb.Text) + "', 'свободен'," + Convert.ToDouble(Pricetb.Text) + ", '" + Convert.ToString(Typecmbb.Text) + "');";
-            SQLiteDataReader srd = sqlcon.ExecuteReader();
-            MessageBox.Show("Номер добавлен");
-            sql.Close();
-            Close();
+            if((Nametb.Text.Equals(""))||(Descriptioncmb.Text.Equals(""))||(Pricetb.Text.Equals("")) || (Typecmbb.Text.Equals("")))
+            {
+                MessageBox.Show("Одно или несколько полей заполнены некорректно");
+            }
+            else
+            {
+                sql.Open();
+                SQLiteCommand sqlcon = new SQLiteCommand(sql);
+                sqlcon.CommandText = @"insert into room(roomID, Name, Description, Status, Price, TypeName) values(null, '" + Convert.ToString(Nametb.Text) + "', '" + Convert.ToString(Descriptioncmb.Text) + "', 'свободен'," + Convert.ToDouble(Pricetb.Text) + ", '" + Convert.ToString(Typecmbb.Text) + "');";
+                SQLiteDataReader srd = sqlcon.ExecuteReader();
+                MessageBox.Show("Номер добавлен");
+                sql.Close();
+                Close();
+            }
         }
     }
 }

@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Typecmbb = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Pricetb = new System.Windows.Forms.TextBox();
-            this.Descriptiontb = new System.Windows.Forms.TextBox();
             this.Nametb = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
-            this.Typecmbb = new System.Windows.Forms.ComboBox();
+            this.Descriptioncmb = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Descriptioncmb);
             this.groupBox1.Controls.Add(this.Typecmbb);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.Pricetb);
-            this.groupBox1.Controls.Add(this.Descriptiontb);
             this.groupBox1.Controls.Add(this.Nametb);
             this.groupBox1.Location = new System.Drawing.Point(43, 28);
             this.groupBox1.Name = "groupBox1";
@@ -57,6 +57,15 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация о номере";
+            // 
+            // Typecmbb
+            // 
+            this.Typecmbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Typecmbb.FormattingEnabled = true;
+            this.Typecmbb.Location = new System.Drawing.Point(142, 104);
+            this.Typecmbb.Name = "Typecmbb";
+            this.Typecmbb.Size = new System.Drawing.Size(117, 21);
+            this.Typecmbb.TabIndex = 8;
             // 
             // label4
             // 
@@ -101,16 +110,10 @@
             this.Pricetb.Size = new System.Drawing.Size(117, 20);
             this.Pricetb.TabIndex = 2;
             // 
-            // Descriptiontb
-            // 
-            this.Descriptiontb.Location = new System.Drawing.Point(142, 47);
-            this.Descriptiontb.Name = "Descriptiontb";
-            this.Descriptiontb.Size = new System.Drawing.Size(117, 20);
-            this.Descriptiontb.TabIndex = 1;
-            // 
             // Nametb
             // 
             this.Nametb.Location = new System.Drawing.Point(142, 18);
+            this.Nametb.MaxLength = 20;
             this.Nametb.Name = "Nametb";
             this.Nametb.Size = new System.Drawing.Size(117, 20);
             this.Nametb.TabIndex = 0;
@@ -125,14 +128,18 @@
             this.SaveBtn.UseVisualStyleBackColor = true;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // Typecmbb
+            // Descriptioncmb
             // 
-            this.Typecmbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Typecmbb.FormattingEnabled = true;
-            this.Typecmbb.Location = new System.Drawing.Point(142, 104);
-            this.Typecmbb.Name = "Typecmbb";
-            this.Typecmbb.Size = new System.Drawing.Size(117, 21);
-            this.Typecmbb.TabIndex = 8;
+            this.Descriptioncmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Descriptioncmb.FormattingEnabled = true;
+            this.Descriptioncmb.Items.AddRange(new object[] {
+            "Эконом",
+            "Стандарт",
+            "Люкс"});
+            this.Descriptioncmb.Location = new System.Drawing.Point(142, 46);
+            this.Descriptioncmb.Name = "Descriptioncmb";
+            this.Descriptioncmb.Size = new System.Drawing.Size(117, 21);
+            this.Descriptioncmb.TabIndex = 10;
             // 
             // RoomsChange
             // 
@@ -157,9 +164,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Pricetb;
-        private System.Windows.Forms.TextBox Descriptiontb;
         private System.Windows.Forms.TextBox Nametb;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.ComboBox Typecmbb;
+        private System.Windows.Forms.ComboBox Descriptioncmb;
     }
 }

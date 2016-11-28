@@ -90,7 +90,7 @@ namespace Hotel
             Form1 main = this.Owner as Form1;
             if (currnet_role == "Менеджер")
             {
-               main.menuStrip1.Items.
+               //main.menuStrip1.Items.
             }
         }
 

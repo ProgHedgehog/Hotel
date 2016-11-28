@@ -25,7 +25,10 @@ namespace Hotel
                 AddToCombobox("TypeName", "Room", Typecmbb);
                 Nametb.Text = Data_For_Request[1];
                 Current_Name = Data_For_Request[1];
-                Descriptiontb.Text = Data_For_Request[2];
+                if (Descriptioncmb.Items.Contains(Data_For_Request[2]))
+                {
+                    Descriptioncmb.Text = Data_For_Request[2];
+                }
                 Pricetb.Text = Data_For_Request[3];
                 if (Typecmbb.Items.Contains(Data_For_Request[4]))
                 {
@@ -56,16 +59,23 @@ namespace Hotel
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            sql.Open();
-            string check_name = @"UPDATE Room SET Name = '" + Convert.ToString(Nametb.Text) + "', Description = '" + Convert.ToString(Descriptiontb.Text) + "', Price = " + Convert.ToDouble(Pricetb.Text) + ", TypeName = '" + Convert.ToString(Typecmbb.Text) + "' WHERE Name LIKE '" + Current_Name + "'";
-            SQLiteCommand check = new SQLiteCommand(check_name, sql);
-            check.ExecuteNonQuery();
-            sql.Close();
-            if (MessageBox.Show("Изменения были успешно сохранены!") == DialogResult.OK)
+            if ((Nametb.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (Pricetb.Text.Equals("")) || (Typecmbb.Text.Equals("")))
             {
-                this.Close();
-                Rooms room = new Rooms();
-                room.Show();
+                MessageBox.Show("Одно или несколько полей заполнены некорректно");
+            }
+            else
+            {
+                sql.Open();
+                string check_name = @"UPDATE Room SET Name = '" + Convert.ToString(Nametb.Text) + "', Description = '" + Convert.ToString(Descriptioncmb.Text) + "', Price = " + Convert.ToDouble(Pricetb.Text) + ", TypeName = '" + Convert.ToString(Typecmbb.Text) + "' WHERE Name LIKE '" + Current_Name + "'";
+                SQLiteCommand check = new SQLiteCommand(check_name, sql);
+                check.ExecuteNonQuery();
+                sql.Close();
+                if (MessageBox.Show("Изменения были успешно сохранены!") == DialogResult.OK)
+                {
+                    this.Close();
+                    Rooms room = new Rooms();
+                    room.Show();
+                }
             }
         }
     }

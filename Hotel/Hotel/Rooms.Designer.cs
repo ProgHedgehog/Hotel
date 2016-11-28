@@ -173,6 +173,7 @@
             // 
             // RoomsdataGridView
             // 
+            this.RoomsdataGridView.AllowUserToDeleteRows = false;
             this.RoomsdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RoomsdataGridView.Location = new System.Drawing.Point(12, 97);
             this.RoomsdataGridView.Name = "RoomsdataGridView";
