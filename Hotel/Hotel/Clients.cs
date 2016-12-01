@@ -20,6 +20,7 @@ namespace Hotel
         public int Selected_Room_ID;
         public Clients(string flag, int room_id)
         {
+
             Current_Flag = flag;
             Selected_Room_ID = room_id;
             if (flag == "From_Form1")
@@ -39,8 +40,6 @@ namespace Hotel
                     function.ShowDB("Client", ClientsdataGridView);
                     ChooseBtn.Enabled = true;
                     BackBtn.Enabled = true;
-                    SettleBtn.Enabled = true;
-                    BookBtn.Enabled = true;
                 }
             }
             
@@ -56,7 +55,7 @@ namespace Hotel
         private void SettleBtn_Click(object sender, EventArgs e)
         {
             Hide();
-            ToSettle ts = new ToSettle();
+            ToSettle ts = new ToSettle(Selected_Room_ID, Convert.ToInt32(ID_tb.Text));
             ts.Show();
         }
 
@@ -94,6 +93,8 @@ namespace Hotel
             Request_Data.Add(ClientsdataGridView.Rows[e.RowIndex].Cells["Number"].Value.ToString());
             ID_tb.Text = Request_Data[0];
             Selected_tb.Text = Request_Data[1];
+            BookBtn.Enabled = true;
+            SettleBtn.Enabled = true;
         }
 
         private void Clients_FormClosed(object sender, FormClosedEventArgs e)

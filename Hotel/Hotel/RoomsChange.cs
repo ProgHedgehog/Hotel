@@ -14,7 +14,7 @@ namespace Hotel
     public partial class RoomsChange : Form
     {
         SQLiteConnection sql = new SQLiteConnection(@"Data Source=base.sqlite;Version=3");
-        
+
         public string Current_Name;
 
         public RoomsChange(List<string> Data_For_Request)
@@ -29,7 +29,7 @@ namespace Hotel
                 {
                     Descriptioncmb.Text = Data_For_Request[2];
                 }
-                Pricetb.Text = Data_For_Request[3];
+                PricemaskedTextBox.Text = Data_For_Request[3];
                 if (Typecmbb.Items.Contains(Data_For_Request[4]))
                 {
                     Typecmbb.Text = Data_For_Request[4];
@@ -40,12 +40,12 @@ namespace Hotel
                 MessageBox.Show("Редактирование не возможно");
             }
         }
-        
+
         private void AddToCombobox(string ItemName, string TableName, ComboBox ComboboxName)
         {
             string c = " ";
             sql.Open();
-            string sql_request = "SELECT "+ItemName+" FROM "+TableName+" ";
+            string sql_request = "SELECT " + ItemName + " FROM " + TableName + " ";
             SQLiteCommand add = new SQLiteCommand(sql_request, sql);
             add.ExecuteNonQuery();
             SQLiteDataReader reader = add.ExecuteReader();
@@ -59,22 +59,43 @@ namespace Hotel
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            if ((Nametb.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (Pricetb.Text.Equals("")) || (Typecmbb.Text.Equals("")))
+            var stop_array = new[] { ".", ",", ";", ":", "?", "!", "<", ">", "-", "=" };
+            if ((Nametb.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (PricemaskedTextBox.Text.Equals("")) || (Typecmbb.Text.Equals("")))
             {
-                MessageBox.Show("Одно или несколько полей заполнены некорректно");
+                MessageBox.Show("Одно или несколько полей не заполнены");
             }
             else
             {
-                sql.Open();
-                string check_name = @"UPDATE Room SET Name = '" + Convert.ToString(Nametb.Text) + "', Description = '" + Convert.ToString(Descriptioncmb.Text) + "', Price = " + Convert.ToDouble(Pricetb.Text) + ", TypeName = '" + Convert.ToString(Typecmbb.Text) + "' WHERE Name LIKE '" + Current_Name + "'";
-                SQLiteCommand check = new SQLiteCommand(check_name, sql);
-                check.ExecuteNonQuery();
-                sql.Close();
-                if (MessageBox.Show("Изменения были успешно сохранены!") == DialogResult.OK)
+                var flag = true;
+                if (Nametb.Text != "")
                 {
-                    this.Close();
-                    Rooms room = new Rooms();
-                    room.Show();
+                    foreach (string t in stop_array)
+                    {
+                        if (Nametb.Text.Contains(t))
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag == false)
+                    {
+                        MessageBox.Show("Название номера введено не верно!");
+                    }
+                    if (flag == true)
+                    {
+                        sql.Open();
+                        string check_name = @"UPDATE Room SET Name = '" + Convert.ToString(Nametb.Text) + "', Description = '" + Convert.ToString(Descriptioncmb.Text) + "', Price = '" + Convert.ToDouble(PricemaskedTextBox.Text) + "', TypeName = '" + Convert.ToString(Typecmbb.Text) + "' WHERE Name LIKE '" + Current_Name + "'";
+                        SQLiteCommand check = new SQLiteCommand(check_name, sql);
+                        check.ExecuteNonQuery();
+                        sql.Close();
+                        if (MessageBox.Show("Изменения были успешно сохранены!") == DialogResult.OK)
+                        {
+                            this.Close();
+                            Rooms room = new Rooms();
+                            room.Show();
+                        }
+                        sql.Close();
+                    }
                 }
             }
         }

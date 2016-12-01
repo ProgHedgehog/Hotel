@@ -8,40 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Hotel
 {
     public partial class Form1 : Form
     {
-        Authorization au;
         public Form1()
-        {
+        {  
             InitializeComponent();
             DateBase db = new DateBase();
             db.AddDatabase();
-
-            au = new Authorization();
-            au.MdiParent = this;
-            au.Dock = DockStyle.Fill;
-            au.Show();            
-
-        }
-
-        
-        private void authorizationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (au == null)
-            {
-                au = new Authorization();
-                au.MdiParent = this;
-                au.Owner = this;
-                au.Dock = DockStyle.Fill;
-                au.Show();
-            }
-            else
-            {
-                au.Show();
-                au.Activate();
-            }
+            //au = new Authorization();
+            //au.MdiParent = this;
+            //au.Dock = DockStyle.Fill;
+            //au.Show();
         }
 
         Clients cl;
@@ -49,7 +29,7 @@ namespace Hotel
         {
             if (cl == null)
             {
-                cl = new Clients("From_Form1",0);
+                cl = new Clients("From_Form1", 0);
                 cl.MdiParent = this;
                 cl.Dock = DockStyle.Fill;
                 cl.Show();
@@ -129,12 +109,26 @@ namespace Hotel
             }
         }
 
-        private void roomsWorkToolStripMenuItem_Click(object sender, EventArgs e)
+        Authorization au;
+        private void AuthorisationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (au == null)
+            {
+                au = new Authorization();
+                au.MdiParent = this;
+                au.Dock = DockStyle.Fill;
+                au.Show();
+            }
+            else
+            {
+                Authorization au1 = new Authorization();
+                au1.Show();
+                au1.Activate();
+            }
         }
+
         AdminPanel adm;
-        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        private void adminToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (adm == null)
             {
@@ -149,5 +143,62 @@ namespace Hotel
                 adm.Activate();
             }
         }
+
+        public void Get_role(string role)
+        {
+            if (role == "superuser")
+            {
+                roomsWorkToolStripMenuItem.Visible = true;
+                adminToolStripMenuItem.Visible = true;
+                clientsToolStripMenuItem.Visible = true;
+                populatesClientsToolStripMenuItem.Visible = true;
+                roomsToolStripMenuItem.Visible = true;
+                documentationToolStripMenuItem.Visible = true;
+                MessageBox.Show("TUTA!");
+            }
+            else
+            {
+                if (role == "Менеджер")
+                {
+                    adminToolStripMenuItem.Visible = true;
+                    clientsToolStripMenuItem.Visible = true;
+                    populatesClientsToolStripMenuItem.Visible = true;
+                    roomsToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    if (role == "Бухгалтер")
+                    {
+                        documentationToolStripMenuItem.Visible = true;
+                    }
+                    else
+                    {
+                        documentationToolStripMenuItem.Visible = false;
+                    }
+                }
+            }
+            this.Close();
+        }
+
+        PasswordChange pch;
+        private void ChangePassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pch == null)
+            {   
+                pch = new PasswordChange();
+                pch.MdiParent = this;
+                pch.Dock = DockStyle.Fill;
+                pch.Show();
+            }   
+            else
+            {   
+                pch.Show();
+                pch.Activate();
+            }
+        }
+    }
+    class Roles
+    {
+        static public string status="";
     }
 }

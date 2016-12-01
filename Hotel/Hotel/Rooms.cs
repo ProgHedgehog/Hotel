@@ -52,6 +52,7 @@ namespace Hotel
         private void Addbtn_Click(object sender, EventArgs e)
         {
             RoomsAdd radd = new RoomsAdd();
+            Close();
             radd.Show();
         }
 
@@ -74,6 +75,7 @@ namespace Hotel
 
         private void RoomsdataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             Request_Data.Clear();
             Editbtn.Enabled = true;
             Deletebtn.Enabled = true;
@@ -82,6 +84,7 @@ namespace Hotel
             Request_Data.Add(RoomsdataGridView.Rows[e.RowIndex].Cells["Description"].Value.ToString());
             Request_Data.Add(RoomsdataGridView.Rows[e.RowIndex].Cells["Price"].Value.ToString());
             Request_Data.Add(RoomsdataGridView.Rows[e.RowIndex].Cells["TypeName"].Value.ToString());
+            NextBtn.Enabled = true;
         }
 
         private void Deletebtn_Click(object sender, EventArgs e)

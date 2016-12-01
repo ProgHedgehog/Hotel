@@ -40,7 +40,7 @@
             // 
             // EnterBtn
             // 
-            this.EnterBtn.Location = new System.Drawing.Point(349, 172);
+            this.EnterBtn.Location = new System.Drawing.Point(369, 172);
             this.EnterBtn.Name = "EnterBtn";
             this.EnterBtn.Size = new System.Drawing.Size(165, 35);
             this.EnterBtn.TabIndex = 0;
@@ -51,7 +51,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 77);
+            this.label1.Location = new System.Drawing.Point(302, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 1;
@@ -60,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 136);
+            this.label2.Location = new System.Drawing.Point(302, 136);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 2;
@@ -68,23 +68,25 @@
             // 
             // Logintb
             // 
-            this.Logintb.Location = new System.Drawing.Point(349, 74);
+            this.Logintb.Location = new System.Drawing.Point(369, 74);
             this.Logintb.Multiline = true;
             this.Logintb.Name = "Logintb";
             this.Logintb.Size = new System.Drawing.Size(165, 20);
             this.Logintb.TabIndex = 3;
+            this.Logintb.Text = "admin";
             // 
             // Passwordtb
             // 
-            this.Passwordtb.Location = new System.Drawing.Point(349, 129);
+            this.Passwordtb.Location = new System.Drawing.Point(369, 129);
             this.Passwordtb.Multiline = true;
             this.Passwordtb.Name = "Passwordtb";
             this.Passwordtb.Size = new System.Drawing.Size(165, 20);
             this.Passwordtb.TabIndex = 4;
+            this.Passwordtb.Text = "admin";
             // 
             // Registration_btn
             // 
-            this.Registration_btn.Location = new System.Drawing.Point(349, 216);
+            this.Registration_btn.Location = new System.Drawing.Point(369, 216);
             this.Registration_btn.Name = "Registration_btn";
             this.Registration_btn.Size = new System.Drawing.Size(165, 35);
             this.Registration_btn.TabIndex = 5;
@@ -96,7 +98,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(374, 25);
+            this.label3.Location = new System.Drawing.Point(394, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 20);
             this.label3.TabIndex = 6;
@@ -104,7 +106,8 @@
             // 
             // Exitbtn
             // 
-            this.Exitbtn.Location = new System.Drawing.Point(349, 257);
+            this.Exitbtn.Enabled = false;
+            this.Exitbtn.Location = new System.Drawing.Point(369, 257);
             this.Exitbtn.Name = "Exitbtn";
             this.Exitbtn.Size = new System.Drawing.Size(165, 35);
             this.Exitbtn.TabIndex = 7;
@@ -129,8 +132,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Authorization";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Authorization_FormClosing_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -30,13 +30,15 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.authorizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AuthorisationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsWorkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.populatesClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsWorkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangePassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,8 +48,7 @@
             this.authorizationToolStripMenuItem,
             this.clientsWorkToolStripMenuItem,
             this.roomsWorkToolStripMenuItem,
-            this.documentationToolStripMenuItem,
-            this.adminToolStripMenuItem});
+            this.documentationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(835, 24);
@@ -57,10 +58,27 @@
             // authorizationToolStripMenuItem
             // 
             this.authorizationToolStripMenuItem.BackColor = System.Drawing.Color.ForestGreen;
+            this.authorizationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AuthorisationToolStripMenuItem,
+            this.adminToolStripMenuItem,
+            this.ChangePassToolStripMenuItem});
             this.authorizationToolStripMenuItem.Name = "authorizationToolStripMenuItem";
             this.authorizationToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.authorizationToolStripMenuItem.Text = "Авторизация";
-            this.authorizationToolStripMenuItem.Click += new System.EventHandler(this.authorizationToolStripMenuItem_Click);
+            // 
+            // AuthorisationToolStripMenuItem
+            // 
+            this.AuthorisationToolStripMenuItem.Name = "AuthorisationToolStripMenuItem";
+            this.AuthorisationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.AuthorisationToolStripMenuItem.Text = "Авторизация";
+            this.AuthorisationToolStripMenuItem.Click += new System.EventHandler(this.AuthorisationToolStripMenuItem_Click);
+            // 
+            // adminToolStripMenuItem
+            // 
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click_1);
             // 
             // clientsWorkToolStripMenuItem
             // 
@@ -93,7 +111,6 @@
             this.roomsWorkToolStripMenuItem.Name = "roomsWorkToolStripMenuItem";
             this.roomsWorkToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
             this.roomsWorkToolStripMenuItem.Text = "Работа с номерами";
-            this.roomsWorkToolStripMenuItem.Click += new System.EventHandler(this.roomsWorkToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
@@ -109,12 +126,12 @@
             this.documentationToolStripMenuItem.Text = "Документация";
             this.documentationToolStripMenuItem.Click += new System.EventHandler(this.documentationToolStripMenuItem_Click);
             // 
-            // adminToolStripMenuItem
+            // ChangePassToolStripMenuItem
             // 
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
-            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
+            this.ChangePassToolStripMenuItem.Name = "ChangePassToolStripMenuItem";
+            this.ChangePassToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.ChangePassToolStripMenuItem.Text = "Сменить пароль";
+            this.ChangePassToolStripMenuItem.Click += new System.EventHandler(this.ChangePassToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -134,15 +151,17 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripMenuItem authorizationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem roomsWorkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem documentationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem populatesClientsToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.ToolStripMenuItem clientsWorkToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem authorizationToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem roomsWorkToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem documentationToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem AuthorisationToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ChangePassToolStripMenuItem;
     }
 }
 

@@ -26,8 +26,8 @@ namespace Hotel
 
         private void ToSettleBtn_Click(object sender, EventArgs e)
         {
-            ToSettle ts = new ToSettle();
-            ts.Show();
+            //ToSettle ts = new ToSettle(0,0);
+            //ts.Show();
         }
     }
 }

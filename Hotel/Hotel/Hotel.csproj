@@ -107,6 +107,12 @@
     <Compile Include="ChangeService.Designer.cs">
       <DependentUpon>ChangeService.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordChange.Designer.cs">
+      <DependentUpon>PasswordChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopulatedClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeService.resx">
       <DependentUpon>ChangeService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordChange.resx">
+      <DependentUpon>PasswordChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopulatedClients.resx">
       <DependentUpon>PopulatedClients.cs</DependentUpon>

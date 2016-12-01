@@ -94,6 +94,7 @@
             this.ContentsReportbtn.TabIndex = 9;
             this.ContentsReportbtn.Text = "Оформить договор";
             this.ContentsReportbtn.UseVisualStyleBackColor = true;
+            this.ContentsReportbtn.Click += new System.EventHandler(this.ContentsReportbtn_Click);
             // 
             // BackBtn
             // 

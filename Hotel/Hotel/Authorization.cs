@@ -20,6 +20,7 @@ namespace Hotel
         {
             InitializeComponent();
         }
+
         public string c = "";
         private void Registration_btn_Click(object sender, EventArgs e)
         {
@@ -48,7 +49,7 @@ namespace Hotel
                 MessageBox.Show("Пользователь с этим логином не зарегистрирован в системе. Обратитесь к администратору");
             }
             sql.Close();
-        } 
+        }
 
         private void EnterBtn_Click(object sender, EventArgs e)
         {
@@ -82,21 +83,42 @@ namespace Hotel
             }
             current_login = login;
             currnet_role = role;
+        
+            
             sql.Close();
-        }
-
-        private void Authorization_FormClosing(object sender, FormClosingEventArgs e)
-        {
             Form1 main = this.Owner as Form1;
-            if (currnet_role == "Менеджер")
-            {
-               //main.menuStrip1.Items.
-            }
+            UserRigts.Get_Rights(currnet_role);
+            Roles.status = currnet_role;
+            
+            Close();
         }
+        
+            
+
+
 
         private void Exitbtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Authorization_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            Form1 form1 = new Form1();
+            
+            form1.roomsWorkToolStripMenuItem.Visible = true;
+            form1.roomsToolStripMenuItem.Visible = true;
+            
+        }
+    }
+
+    static public class UserRigts
+    {
+
+        static public string Get_Rights(string role)
+        {
+            string _role = role;
+            return role;
         }
     }
 }

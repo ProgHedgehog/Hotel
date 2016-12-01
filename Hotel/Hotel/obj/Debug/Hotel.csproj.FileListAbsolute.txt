@@ -45,7 +45,6 @@ C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.ex
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.pdb
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\bin\Debug\Hotel.exe
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\bin\Debug\Hotel.pdb
-C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.AdminPanel.resources
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.Authorization.resources
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.ClientsAdd.resources
@@ -63,3 +62,5 @@ C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.Pr
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.RoomsChange.resources
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.csproj.GenerateResource.Cache
 C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.RoomsAdd.resources
+C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Универ\NewHotel\trunk\Hotel\Hotel\obj\Debug\Hotel.PasswordChange.resources

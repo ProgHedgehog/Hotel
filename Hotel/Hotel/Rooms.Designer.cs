@@ -184,6 +184,7 @@
             // 
             // NextBtn
             // 
+            this.NextBtn.Enabled = false;
             this.NextBtn.Location = new System.Drawing.Point(666, 311);
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.Size = new System.Drawing.Size(134, 45);

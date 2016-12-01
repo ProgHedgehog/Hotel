@@ -39,20 +39,43 @@ namespace Hotel
         }
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            if((Nametb.Text.Equals(""))||(Descriptioncmb.Text.Equals(""))||(Pricetb.Text.Equals("")) || (Typecmbb.Text.Equals("")))
+            var stop_array = new[] { ".", ",", ";", ":", "?", "!", "<", ">", "-", "=" };
+            if ((NametextBox.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (PricemaskedTextBox.Text.Equals("")) || (Typecmbb.Text.Equals("")))
             {
-                MessageBox.Show("Одно или несколько полей заполнены некорректно");
+                MessageBox.Show("Одно или несколько полей не заполнены");
             }
             else
             {
-                sql.Open();
-                SQLiteCommand sqlcon = new SQLiteCommand(sql);
-                sqlcon.CommandText = @"insert into room(roomID, Name, Description, Status, Price, TypeName) values(null, '" + Convert.ToString(Nametb.Text) + "', '" + Convert.ToString(Descriptioncmb.Text) + "', 'свободен'," + Convert.ToDouble(Pricetb.Text) + ", '" + Convert.ToString(Typecmbb.Text) + "');";
-                SQLiteDataReader srd = sqlcon.ExecuteReader();
-                MessageBox.Show("Номер добавлен");
-                sql.Close();
-                Close();
+                var flag = true;
+                if (NametextBox.Text != "")
+                {
+                    foreach (string t in stop_array)
+                    {
+                        if (NametextBox.Text.Contains(t))
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag == false)
+                    {
+                        MessageBox.Show("Название номера введено не верно!");
+                    }
+                    if (flag == true)
+                    {
+                        sql.Open();
+                        SQLiteCommand sqlcon = new SQLiteCommand(sql);
+                        sqlcon.CommandText = @"insert into room(roomID, Name, Description, Status, Price, TypeName) values(null, '" + Convert.ToString(NametextBox.Text) + "', '" + Convert.ToString(Descriptioncmb.Text) + "', 'свободен','" + Convert.ToDouble(PricemaskedTextBox.Text) + "', '" + Convert.ToString(Typecmbb.Text) + "');";
+                        SQLiteDataReader srd = sqlcon.ExecuteReader();
+                        MessageBox.Show("Номер добавлен");
+                        sql.Close();
+                        Close();
+                        Rooms r = new Rooms();
+                        r.Show();
+                    }
+                }
             }
+
         }
     }
 }
