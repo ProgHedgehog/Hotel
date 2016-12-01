@@ -83,14 +83,10 @@ namespace Hotel
             }
             current_login = login;
             currnet_role = role;
-        
-            
             sql.Close();
             Form1 main = this.Owner as Form1;
             UserRigts.Get_Rights(currnet_role);
             Roles.status = currnet_role;
-            
-            Close();
         }
         
             
@@ -114,7 +110,6 @@ namespace Hotel
 
     static public class UserRigts
     {
-
         static public string Get_Rights(string role)
         {
             string _role = role;

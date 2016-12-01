@@ -93,8 +93,12 @@ namespace Hotel
             Request_Data.Add(ClientsdataGridView.Rows[e.RowIndex].Cells["Number"].Value.ToString());
             ID_tb.Text = Request_Data[0];
             Selected_tb.Text = Request_Data[1];
-            BookBtn.Enabled = true;
-            SettleBtn.Enabled = true;
+            if(Current_Flag == "From_Rooms")
+            {
+                BookBtn.Enabled = true;
+                SettleBtn.Enabled = true;
+            }
+            
         }
 
         private void Clients_FormClosed(object sender, FormClosedEventArgs e)
