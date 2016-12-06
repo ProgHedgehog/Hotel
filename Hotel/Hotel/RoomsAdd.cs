@@ -37,6 +37,7 @@ namespace Hotel
             }
             sql.Close();
         }
+
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             var stop_array = new[] { ".", ",", ";", ":", "?", "!", "<", ">", "-", "=" };

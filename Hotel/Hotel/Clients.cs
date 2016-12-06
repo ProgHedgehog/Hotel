@@ -98,7 +98,6 @@ namespace Hotel
                 BookBtn.Enabled = true;
                 SettleBtn.Enabled = true;
             }
-            
         }
 
         private void Clients_FormClosed(object sender, FormClosedEventArgs e)
