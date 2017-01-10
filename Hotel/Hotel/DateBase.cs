@@ -15,7 +15,7 @@ namespace Hotel
         SQLiteConnection sql = new SQLiteConnection(@"Data Source=base.sqlite;Version=3");
         public void AddDatabase()
         {
-            SQLiteConnection.CreateFile(@"C:\Hotel\Hotel\bin\Debug\Database.sqlite");
+            SQLiteConnection.CreateFile(@"C:\Hotel\Hotel\Hotel\bin\Debug\Database.sqlite");
             SQLiteCommand Client = new SQLiteCommand("create table if not exists Client(ClientID INTEGER PRIMARY KEY, FIO VARCHAR, Passport VARCHAR, Number VARCHAR)",sql);
             SQLiteCommand Type = new SQLiteCommand("create table if not exists Type(TypeID INTEGER PRIMARY KEY, Name VARCHAR)", sql);
             SQLiteCommand Room = new SQLiteCommand("create table if not exists Room(RoomID INTEGER PRIMARY KEY, Name VARCHAR, Description VARCHAR, Status VARCHAR, Price DOUBLE, TypeName VARCHAR, CONSTRAINT Room_Typefk FOREIGN KEY (TypeName) REFERENCES Type(Name))", sql);

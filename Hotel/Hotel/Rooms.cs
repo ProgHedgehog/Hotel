@@ -15,7 +15,9 @@ namespace Hotel
     public partial class Rooms : Form
     {
         SQLiteConnection sql = new SQLiteConnection(@"Data Source=base.sqlite;Version=3");
+
         public List<string> Request_Data = new List<string>();
+
         public Rooms()
         {
             InitializeComponent();
@@ -42,10 +44,15 @@ namespace Hotel
 
             sql.Close();
         }
+
         private void NextBtn_Click(object sender, EventArgs e)
         {
+            Form1 f1 = new Form1();
             this.Close();
             Clients cl = new Clients("From_Rooms", int.Parse(Request_Data[0]));
+            cl.Location = new Point(f1.Top + 10, f1.Left + 56);
+            cl.Width = f1.Width - 20;
+            cl.Height = f1.Height - 65;
             cl.Show();
         }
 
@@ -100,7 +107,6 @@ namespace Hotel
 
         private void Filterbtn_Click(object sender, EventArgs e)
         {
-
             if (Filtercmbb.Text != "все")
             {
                 sql.Open();
@@ -124,13 +130,13 @@ namespace Hotel
             {
                 ShowDB("Room");
             }
-
         }
 
         private void Filtercmbb_SelectedValueChanged(object sender, EventArgs e)
         {
             Filterbtn.Enabled = true;
         }
+
         private void Rooms_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

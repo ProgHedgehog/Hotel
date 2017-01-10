@@ -22,7 +22,7 @@ namespace Hotel
             InitializeComponent();
             if (Data_For_Request != null)
             {
-                AddToCombobox("TypeName", "Room", Typecmbb);
+                AddToCombobox("Name", "Type", Typecmbb);
                 Nametb.Text = Data_For_Request[1];
                 Current_Name = Data_For_Request[1];
                 if (Descriptioncmb.Items.Contains(Data_For_Request[2]))
@@ -59,42 +59,61 @@ namespace Hotel
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            var stop_array = new[] { ".", ",", ";", ":", "?", "!", "<", ">", "-", "=" };
-            if ((Nametb.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (PricemaskedTextBox.Text.Equals("")) || (Typecmbb.Text.Equals("")))
+            string c = " ";
+            sql.Open();
+            string sql_request = "SELECT Name FROM Room WHERE Name ='" + Nametb.Text + "' ";
+            SQLiteCommand add = new SQLiteCommand(sql_request, sql);
+            add.ExecuteNonQuery();
+            SQLiteDataReader reader = add.ExecuteReader();
+            while (reader.Read())
             {
-                MessageBox.Show("Одно или несколько полей не заполнены");
+                c = reader[0] + "";
+            }
+            sql.Close();
+
+            if (Nametb.Text.Trim() == c)
+            {
+                MessageBox.Show("Номер с таким именем уже существует!");
             }
             else
             {
-                var flag = true;
-                if (Nametb.Text != "")
+                var stop_array = new[] { ".", ",", ";", ":", "?", "!", "<", ">", "-", "=" };
+                if ((Nametb.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (PricemaskedTextBox.Text.Equals("")) || (Typecmbb.Text.Equals("")))
                 {
-                    foreach (string t in stop_array)
+                    MessageBox.Show("Одно или несколько полей не заполнены");
+                }
+                else
+                {
+                    var flag = true;
+                    if (Nametb.Text != "")
                     {
-                        if (Nametb.Text.Contains(t))
+                        foreach (string t in stop_array)
                         {
-                            flag = false;
-                            break;
+                            if (Nametb.Text.Contains(t))
+                            {
+                                flag = false;
+                                break;
+                            }
                         }
-                    }
-                    if (flag == false)
-                    {
-                        MessageBox.Show("Название номера введено не верно!");
-                    }
-                    if (flag == true)
-                    {
-                        sql.Open();
-                        string check_name = @"UPDATE Room SET Name = '" + Convert.ToString(Nametb.Text) + "', Description = '" + Convert.ToString(Descriptioncmb.Text) + "', Price = '" + Convert.ToDouble(PricemaskedTextBox.Text) + "', TypeName = '" + Convert.ToString(Typecmbb.Text) + "' WHERE Name LIKE '" + Current_Name + "'";
-                        SQLiteCommand check = new SQLiteCommand(check_name, sql);
-                        check.ExecuteNonQuery();
-                        sql.Close();
-                        if (MessageBox.Show("Изменения были успешно сохранены!") == DialogResult.OK)
+                        if (flag == false)
                         {
-                            this.Close();
-                            Rooms room = new Rooms();
-                            room.Show();
+                            MessageBox.Show("Название номера введено не верно!");
                         }
-                        sql.Close();
+                        if (flag == true)
+                        {
+                            sql.Open();
+                            string check_name = @"UPDATE Room SET Name = '" + Convert.ToString(Nametb.Text) + "', Description = '" + Convert.ToString(Descriptioncmb.Text) + "', Price = '" + Convert.ToDouble(PricemaskedTextBox.Text) + "', TypeName = '" + Convert.ToString(Typecmbb.Text) + "' WHERE Name LIKE '" + Current_Name + "'";
+                            SQLiteCommand check = new SQLiteCommand(check_name, sql);
+                            check.ExecuteNonQuery();
+                            sql.Close();
+                            if (MessageBox.Show("Изменения были успешно сохранены!") == DialogResult.OK)
+                            {
+                                this.Close();
+                                Rooms room = new Rooms();
+                                room.Show();
+                            }
+                            sql.Close();
+                        }
                     }
                 }
             }

@@ -93,6 +93,8 @@ namespace Hotel
             Request_Data.Add(ClientsdataGridView.Rows[e.RowIndex].Cells["Number"].Value.ToString());
             ID_tb.Text = Request_Data[0];
             Selected_tb.Text = Request_Data[1];
+            Edit_btn.Enabled = true;
+            Delete_btn.Enabled = true;
             if(Current_Flag == "From_Rooms")
             {
                 BookBtn.Enabled = true;

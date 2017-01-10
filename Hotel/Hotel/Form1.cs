@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 
 namespace Hotel
@@ -14,14 +15,8 @@ namespace Hotel
     public partial class Form1 : Form
     {
         public Form1()
-        {  
+        {
             InitializeComponent();
-            DateBase db = new DateBase();
-            db.AddDatabase();
-            //au = new Authorization();
-            //au.MdiParent = this;
-            //au.Dock = DockStyle.Fill;
-            //au.Show();
         }
 
         Clients cl;
@@ -115,15 +110,33 @@ namespace Hotel
             if (au == null)
             {
                 au = new Authorization();
-                au.MdiParent = this;
+                au.Owner = this;
                 au.Dock = DockStyle.Fill;
-                au.Show();
+                if (UserRigts._login == null)
+                {
+                    au.EnterBtn.Text = "Вход";
+                }
+                else
+                {
+                    au.EnterBtn.Text = "Выход";
+                }
+                au.Location =new Point(this.Top+10,this.Left+56);
+                au.Width = this.Width - 20;
+                au.Height = this.Height - 65;
+                au.ShowDialog();
             }
             else
             {
-                Authorization au1 = new Authorization();
-                au1.Show();
-                au1.Activate();
+                if (UserRigts._login != "")
+                {
+                    au.EnterBtn.Text = "Выход";
+                }
+                else
+                {
+                    au.EnterBtn.Text = "Вход";
+                }
+                au.ShowDialog();
+                au.Activate();
             }
         }
 
@@ -154,7 +167,6 @@ namespace Hotel
                 populatesClientsToolStripMenuItem.Visible = true;
                 roomsToolStripMenuItem.Visible = true;
                 documentationToolStripMenuItem.Visible = true;
-                MessageBox.Show("TUTA!");
             }
             else
             {
@@ -196,9 +208,10 @@ namespace Hotel
                 pch.Activate();
             }
         }
-    }
-    class Roles
-    {
-        static public string status="";
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Authorization aut = new Authorization();
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace Hotel
             FIO_tb.Text = Requested_Data[1];
             Passport_tb.Text = Requested_Data[2];
             Number_tb.Text = Requested_Data[3];
+            
         }
 
         private void Save_btn_Click(object sender, EventArgs e)

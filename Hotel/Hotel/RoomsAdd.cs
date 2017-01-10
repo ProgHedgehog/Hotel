@@ -16,7 +16,7 @@ namespace Hotel
         public RoomsAdd()
         {
             InitializeComponent();
-            AddToCombobox("TypeName", "Room", Typecmbb);
+            AddToCombobox("Name", "Type", Typecmbb);
         }
 
         private void AddToCombobox(string ItemName, string TableName, ComboBox ComboboxName)
@@ -40,43 +40,61 @@ namespace Hotel
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            var stop_array = new[] { ".", ",", ";", ":", "?", "!", "<", ">", "-", "=" };
-            if ((NametextBox.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (PricemaskedTextBox.Text.Equals("")) || (Typecmbb.Text.Equals("")))
+            string c = " ";
+            sql.Open();
+            string sql_request = "SELECT Name FROM Room WHERE Name ='" + NametextBox.Text + "' ";
+            SQLiteCommand add = new SQLiteCommand(sql_request, sql);
+            add.ExecuteNonQuery();
+            SQLiteDataReader reader = add.ExecuteReader();
+            while (reader.Read())
             {
-                MessageBox.Show("Одно или несколько полей не заполнены");
+                c = reader[0] + "";
+            }
+            sql.Close();
+
+            if (NametextBox.Text.Trim() == c)
+            {
+                MessageBox.Show("Номер с таким именем уже существует!");
             }
             else
             {
-                var flag = true;
-                if (NametextBox.Text != "")
+                var stop_array = new[] { ".", ",", ";", ":", "?", "!", "<", ">", "-", "=" };
+                if ((NametextBox.Text.Equals("")) || (Descriptioncmb.Text.Equals("")) || (PricemaskedTextBox.Text.Equals("")) || (Typecmbb.Text.Equals("")))
                 {
-                    foreach (string t in stop_array)
+                    MessageBox.Show("Одно или несколько полей не заполнены");
+                }
+                else
+                {
+                    var flag = true;
+                    if (NametextBox.Text != "")
                     {
-                        if (NametextBox.Text.Contains(t))
+                        foreach (string t in stop_array)
                         {
-                            flag = false;
-                            break;
+                            if (NametextBox.Text.Contains(t))
+                            {
+                                flag = false;
+                                break;
+                            }
                         }
-                    }
-                    if (flag == false)
-                    {
-                        MessageBox.Show("Название номера введено не верно!");
-                    }
-                    if (flag == true)
-                    {
-                        sql.Open();
-                        SQLiteCommand sqlcon = new SQLiteCommand(sql);
-                        sqlcon.CommandText = @"insert into room(roomID, Name, Description, Status, Price, TypeName) values(null, '" + Convert.ToString(NametextBox.Text) + "', '" + Convert.ToString(Descriptioncmb.Text) + "', 'свободен','" + Convert.ToDouble(PricemaskedTextBox.Text) + "', '" + Convert.ToString(Typecmbb.Text) + "');";
-                        SQLiteDataReader srd = sqlcon.ExecuteReader();
-                        MessageBox.Show("Номер добавлен");
-                        sql.Close();
-                        Close();
-                        Rooms r = new Rooms();
-                        r.Show();
+                        if (flag == false)
+                        {
+                            MessageBox.Show("Название номера введено не верно!");
+                        }
+                        if (flag == true)
+                        {
+                            sql.Open();
+                            SQLiteCommand sqlcon = new SQLiteCommand(sql);
+                            sqlcon.CommandText = @"insert into room(roomID, Name, Description, Status, Price, TypeName) values(null, '" + Convert.ToString(NametextBox.Text) + "', '" + Convert.ToString(Descriptioncmb.Text) + "', 'свободен','" + Convert.ToDouble(PricemaskedTextBox.Text) + "', '" + Convert.ToString(Typecmbb.Text) + "');";
+                            SQLiteDataReader srd = sqlcon.ExecuteReader();
+                            MessageBox.Show("Номер добавлен");
+                            sql.Close();
+                            Close();
+                            Rooms r = new Rooms();
+                            r.Show();
+                        }
                     }
                 }
             }
-
         }
     }
 }

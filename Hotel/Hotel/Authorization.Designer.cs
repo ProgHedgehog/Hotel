@@ -35,7 +35,6 @@
             this.Passwordtb = new System.Windows.Forms.TextBox();
             this.Registration_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.Exitbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EnterBtn
@@ -44,7 +43,7 @@
             this.EnterBtn.Name = "EnterBtn";
             this.EnterBtn.Size = new System.Drawing.Size(165, 35);
             this.EnterBtn.TabIndex = 0;
-            this.EnterBtn.Text = "Войти";
+            this.EnterBtn.Text = "Вход";
             this.EnterBtn.UseVisualStyleBackColor = true;
             this.EnterBtn.Click += new System.EventHandler(this.EnterBtn_Click);
             // 
@@ -73,16 +72,15 @@
             this.Logintb.Name = "Logintb";
             this.Logintb.Size = new System.Drawing.Size(165, 20);
             this.Logintb.TabIndex = 3;
-            this.Logintb.Text = "admin";
             // 
             // Passwordtb
             // 
             this.Passwordtb.Location = new System.Drawing.Point(369, 129);
             this.Passwordtb.Multiline = true;
             this.Passwordtb.Name = "Passwordtb";
+            this.Passwordtb.PasswordChar = '*';
             this.Passwordtb.Size = new System.Drawing.Size(165, 20);
             this.Passwordtb.TabIndex = 4;
-            this.Passwordtb.Text = "admin";
             // 
             // Registration_btn
             // 
@@ -104,23 +102,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Авторизация";
             // 
-            // Exitbtn
-            // 
-            this.Exitbtn.Enabled = false;
-            this.Exitbtn.Location = new System.Drawing.Point(369, 257);
-            this.Exitbtn.Name = "Exitbtn";
-            this.Exitbtn.Size = new System.Drawing.Size(165, 35);
-            this.Exitbtn.TabIndex = 7;
-            this.Exitbtn.Text = "Выйти";
-            this.Exitbtn.UseVisualStyleBackColor = true;
-            this.Exitbtn.Click += new System.EventHandler(this.Exitbtn_Click);
-            // 
             // Authorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(604, 317);
-            this.Controls.Add(this.Exitbtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Registration_btn);
             this.Controls.Add(this.Passwordtb);
@@ -128,28 +115,27 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.EnterBtn);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Authorization";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Авторизация";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Authorization_FormClosing_1);
+            this.Deactivate += new System.EventHandler(this.Authorization_Deactivate);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button EnterBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Logintb;
         private System.Windows.Forms.TextBox Passwordtb;
         private System.Windows.Forms.Button Registration_btn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Exitbtn;
+        public System.Windows.Forms.Button EnterBtn;
     }
 }

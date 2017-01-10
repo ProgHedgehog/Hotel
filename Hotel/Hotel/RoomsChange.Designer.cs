@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PricemaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.Descriptioncmb = new System.Windows.Forms.ComboBox();
             this.Typecmbb = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Nametb = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
-            this.PricemaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,14 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация о номере";
+            // 
+            // PricemaskedTextBox
+            // 
+            this.PricemaskedTextBox.Location = new System.Drawing.Point(142, 77);
+            this.PricemaskedTextBox.Mask = "00000.00";
+            this.PricemaskedTextBox.Name = "PricemaskedTextBox";
+            this.PricemaskedTextBox.Size = new System.Drawing.Size(117, 20);
+            this.PricemaskedTextBox.TabIndex = 11;
             // 
             // Descriptioncmb
             // 
@@ -134,18 +142,11 @@
             this.SaveBtn.UseVisualStyleBackColor = true;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // PricemaskedTextBox
-            // 
-            this.PricemaskedTextBox.Location = new System.Drawing.Point(142, 77);
-            this.PricemaskedTextBox.Mask = "00000.00";
-            this.PricemaskedTextBox.Name = "PricemaskedTextBox";
-            this.PricemaskedTextBox.Size = new System.Drawing.Size(117, 20);
-            this.PricemaskedTextBox.TabIndex = 11;
-            // 
             // RoomsChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(359, 227);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.groupBox1);

@@ -153,11 +153,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(292, 194);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.groupBox1);
             this.Name = "RoomsAdd";
-            this.Text = "RoomsAdd";
+            this.Text = "Добавление номера";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

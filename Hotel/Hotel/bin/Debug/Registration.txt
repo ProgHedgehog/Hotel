@@ -1,1 +1,1 @@
-insert into Registration(ID, Login, Password, Role) Values(0,'admin','admin','superuser')
+drop table Registration

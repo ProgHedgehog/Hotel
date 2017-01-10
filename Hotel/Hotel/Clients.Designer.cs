@@ -130,6 +130,7 @@
             // 
             // Delete_btn
             // 
+            this.Delete_btn.Enabled = false;
             this.Delete_btn.Location = new System.Drawing.Point(213, 71);
             this.Delete_btn.Name = "Delete_btn";
             this.Delete_btn.Size = new System.Drawing.Size(141, 23);
@@ -140,6 +141,7 @@
             // 
             // Edit_btn
             // 
+            this.Edit_btn.Enabled = false;
             this.Edit_btn.Location = new System.Drawing.Point(213, 45);
             this.Edit_btn.Name = "Edit_btn";
             this.Edit_btn.Size = new System.Drawing.Size(141, 23);
@@ -196,6 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(717, 345);
             this.Controls.Add(this.ChooseBtn);
             this.Controls.Add(this.BackBtn);

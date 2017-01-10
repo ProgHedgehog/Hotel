@@ -32,13 +32,13 @@
             this.authorizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AuthorisationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangePassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsWorkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.populatesClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsWorkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ChangePassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             // 
             // authorizationToolStripMenuItem
             // 
-            this.authorizationToolStripMenuItem.BackColor = System.Drawing.Color.ForestGreen;
+            this.authorizationToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.authorizationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AuthorisationToolStripMenuItem,
             this.adminToolStripMenuItem,
@@ -75,16 +75,26 @@
             // 
             // adminToolStripMenuItem
             // 
+            this.adminToolStripMenuItem.Enabled = false;
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click_1);
+            // 
+            // ChangePassToolStripMenuItem
+            // 
+            this.ChangePassToolStripMenuItem.Enabled = false;
+            this.ChangePassToolStripMenuItem.Name = "ChangePassToolStripMenuItem";
+            this.ChangePassToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.ChangePassToolStripMenuItem.Text = "Сменить пароль";
+            this.ChangePassToolStripMenuItem.Click += new System.EventHandler(this.ChangePassToolStripMenuItem_Click);
             // 
             // clientsWorkToolStripMenuItem
             // 
             this.clientsWorkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientsToolStripMenuItem,
             this.populatesClientsToolStripMenuItem});
+            this.clientsWorkToolStripMenuItem.Enabled = false;
             this.clientsWorkToolStripMenuItem.Name = "clientsWorkToolStripMenuItem";
             this.clientsWorkToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
             this.clientsWorkToolStripMenuItem.Text = "Работа с клиентами";
@@ -105,9 +115,10 @@
             // 
             // roomsWorkToolStripMenuItem
             // 
-            this.roomsWorkToolStripMenuItem.BackColor = System.Drawing.Color.ForestGreen;
+            this.roomsWorkToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.roomsWorkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.roomsToolStripMenuItem});
+            this.roomsWorkToolStripMenuItem.Enabled = false;
             this.roomsWorkToolStripMenuItem.Name = "roomsWorkToolStripMenuItem";
             this.roomsWorkToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
             this.roomsWorkToolStripMenuItem.Text = "Работа с номерами";
@@ -121,17 +132,11 @@
             // 
             // documentationToolStripMenuItem
             // 
+            this.documentationToolStripMenuItem.Enabled = false;
             this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
             this.documentationToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.documentationToolStripMenuItem.Text = "Документация";
             this.documentationToolStripMenuItem.Click += new System.EventHandler(this.documentationToolStripMenuItem_Click);
-            // 
-            // ChangePassToolStripMenuItem
-            // 
-            this.ChangePassToolStripMenuItem.Name = "ChangePassToolStripMenuItem";
-            this.ChangePassToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.ChangePassToolStripMenuItem.Text = "Сменить пароль";
-            this.ChangePassToolStripMenuItem.Click += new System.EventHandler(this.ChangePassToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -142,7 +147,8 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Hotel";
+            this.Text = "Работа гостиницы";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -161,7 +167,7 @@
         public System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem AuthorisationToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ChangePassToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem ChangePassToolStripMenuItem;
     }
 }
 

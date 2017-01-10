@@ -19,8 +19,12 @@ namespace Hotel
         public Authorization()
         {
             InitializeComponent();
+            if (UserRigts._login != "")
+            {
+                EnterBtn.Text = "Выход";
+            }
         }
-
+        public bool success;
         public string c = "";
         private void Registration_btn_Click(object sender, EventArgs e)
         {
@@ -53,67 +57,114 @@ namespace Hotel
 
         private void EnterBtn_Click(object sender, EventArgs e)
         {
-            string login = "";
-            sql.Open();
-            SQLiteCommand check_if_registered = new SQLiteCommand("SELECT Login FROM Registration WHERE Password = '" + Passwordtb.Text + "' AND Login = '" + Logintb.Text + "'", sql);
-            check_if_registered.ExecuteNonQuery();
-            SQLiteDataReader reader = check_if_registered.ExecuteReader();
-            while (reader.Read())
+            if (EnterBtn.Text == "Вход")
             {
-                login = reader[0] + "";
-            }
-            string role = "";
-            check_if_registered = new SQLiteCommand("SELECT role FROM Registration WHERE Password = '" + Passwordtb.Text + "' AND Login = '" + Logintb.Text + "'", sql);
-            check_if_registered.ExecuteNonQuery();
-            reader = check_if_registered.ExecuteReader();
-            while (reader.Read())
-            {
-                role = reader[0] + "";
-            }
-            if (login == "")
-            {
-                MessageBox.Show("Логин или пароль указан не верно");
+                string login = "";
+                sql.Open();
+                SQLiteCommand check_if_registered = new SQLiteCommand("SELECT Login FROM Registration WHERE Password = '" + Passwordtb.Text + "' AND Login = '" + Logintb.Text + "'", sql);
+                check_if_registered.ExecuteNonQuery();
+                SQLiteDataReader reader = check_if_registered.ExecuteReader();
+                while (reader.Read())
+                {
+                    login = reader[0] + "";
+                }
+                string role = "";
+                check_if_registered = new SQLiteCommand("SELECT role FROM Registration WHERE Password = '" + Passwordtb.Text + "' AND Login = '" + Logintb.Text + "'", sql);
+                check_if_registered.ExecuteNonQuery();
+                reader = check_if_registered.ExecuteReader();
+                while (reader.Read())
+                {
+                    role = reader[0] + "";
+                }
+                if (login == "")
+                {
+                    MessageBox.Show("Логин или пароль указан не верно");
+                }
+                else
+                {
+                    if (MessageBox.Show("Здравствуйте " + login + " ") == DialogResult.OK)
+                    {
+                        UserRigts.Get_Rights(role, login);
+                        Logintb.Clear();
+                        Passwordtb.Clear();
+                    }
+                }
+                currnet_role = role;
+                sql.Close();
+                Form1 f1 = this.Owner as Form1;
+                if (role == "superuser")
+                {
+                    f1.roomsWorkToolStripMenuItem.Enabled = true;
+                    f1.adminToolStripMenuItem.Enabled = true;
+                    f1.clientsWorkToolStripMenuItem.Enabled = true;
+                    f1.clientsToolStripMenuItem.Enabled = true;
+                    f1.populatesClientsToolStripMenuItem.Enabled = true;
+                    f1.roomsToolStripMenuItem.Enabled = true;
+                    f1.documentationToolStripMenuItem.Enabled = true;
+                    f1.ChangePassToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    if (role == "manager")
+                    {
+                        f1.clientsWorkToolStripMenuItem.Enabled = true;
+                        f1.roomsWorkToolStripMenuItem.Enabled = true;
+                        f1.ChangePassToolStripMenuItem.Enabled = true;
+                    }
+                    else
+                    {
+                        if (role == "Bookkeeper")
+                        {
+                            f1.documentationToolStripMenuItem.Enabled = true;
+                            f1.ChangePassToolStripMenuItem.Enabled = true;
+                        }
+                    }
+                }
+                this.Close();
             }
             else
             {
-                if (MessageBox.Show("Здравствуйте " + login + " ") == DialogResult.OK)
+                if(EnterBtn.Text == "Выход")
                 {
+                    UserRigts._role = "";
+                    UserRigts._login = "";
+                    EnterBtn.Text = "Вход";
+                    Form1 f1 = this.Owner as Form1;
+                    f1.roomsWorkToolStripMenuItem.Enabled = false;
+                    f1.adminToolStripMenuItem.Enabled = false;
+                    f1.clientsWorkToolStripMenuItem.Enabled = false;
+                    f1.clientsToolStripMenuItem.Enabled = false;
+                    f1.populatesClientsToolStripMenuItem.Enabled = false;
+                    f1.roomsToolStripMenuItem.Enabled = false;
+                    f1.documentationToolStripMenuItem.Enabled = false;
+                    f1.ChangePassToolStripMenuItem.Enabled = false;
+                    Logintb.Clear();
+                    Passwordtb.Clear();
                     Close();
+
+                    List<Form> forms = f1.MdiChildren.ToList();
+                    foreach(Form f in forms)
+                    {
+                        f.Close();
+                    }
                 }
             }
-            current_login = login;
-            currnet_role = role;
-            sql.Close();
-            Form1 main = this.Owner as Form1;
-            UserRigts.Get_Rights(currnet_role);
-            Roles.status = currnet_role;
-        }
-        
-            
-
-
-
-        private void Exitbtn_Click(object sender, EventArgs e)
-        {
-
         }
 
-        private void Authorization_FormClosing_1(object sender, FormClosingEventArgs e)
+        private void Authorization_Deactivate(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            
-            form1.roomsWorkToolStripMenuItem.Visible = true;
-            form1.roomsToolStripMenuItem.Visible = true;
-            
+            Close();
         }
     }
 
     static public class UserRigts
     {
-        static public string Get_Rights(string role)
-        {
-            string _role = role;
-            return role;
+        public static string _role;
+        public static string _login;
+        static public void Get_Rights(string role, string login)
+        { 
+            _role = role;
+            _login = login;
         }
     }
 }

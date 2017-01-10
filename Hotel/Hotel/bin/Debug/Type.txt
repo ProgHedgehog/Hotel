@@ -1,0 +1,4 @@
+﻿insert into type(TypeID, Name) values(0, 'Однокомнатный');
+insert into type(TypeID, Name) values(1,'Двухкомнатный');
+insert into type(TypeID, Name) values(2,'Трёхкомнатный');
+insert into type(TypeID, Name) values(3,'Четырёхкомнатный');

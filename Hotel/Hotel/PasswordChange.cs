@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 namespace Hotel
 {
-    
+
     public partial class PasswordChange : Form
     {
         SQLiteConnection sql = new SQLiteConnection(@"Data Source=base.sqlite;Version=3");
@@ -46,7 +46,7 @@ namespace Hotel
                     if (flag == true)
                     {
                         sql.Open();
-                        string check_name = @"UPDATE Registration SET Password = '" + Convert.ToString(PasswordTb.Text) + "'";
+                        string check_name = @"UPDATE Registration SET Password = '" + Convert.ToString(PasswordTb.Text) + "' WHERE Login = '" + UserRigts._login + "'";
                         SQLiteCommand check = new SQLiteCommand(check_name, sql);
                         check.ExecuteNonQuery();
                         sql.Close();
@@ -57,6 +57,14 @@ namespace Hotel
                         sql.Close();
                     }
                 }
+            }
+        }
+
+        private void PasswordTb_TextChanged(object sender, EventArgs e)
+        {
+            if ((PasswordTb.Text.ToCharArray().Count() > 4)&&(PasswordTb.Text.ToCharArray().Count()<15))
+            {
+                Changepassbut.Enabled = true;
             }
         }
     }

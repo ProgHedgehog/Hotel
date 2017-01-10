@@ -30,10 +30,10 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.OnAddcmb = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.OnAddtb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.OnAddtb = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.OnAddcmb = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Deletebtn = new System.Windows.Forms.Button();
             this.OnDeletecmb = new System.Windows.Forms.ComboBox();
@@ -66,16 +66,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавить нового пользователя";
             // 
-            // OnAddcmb
+            // label2
             // 
-            this.OnAddcmb.FormattingEnabled = true;
-            this.OnAddcmb.Items.AddRange(new object[] {
-            "Менеджер",
-            "Бухгалтер"});
-            this.OnAddcmb.Location = new System.Drawing.Point(80, 19);
-            this.OnAddcmb.Name = "OnAddcmb";
-            this.OnAddcmb.Size = new System.Drawing.Size(114, 21);
-            this.OnAddcmb.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Логин";
+            // 
+            // OnAddtb
+            // 
+            this.OnAddtb.Location = new System.Drawing.Point(80, 56);
+            this.OnAddtb.Name = "OnAddtb";
+            this.OnAddtb.Size = new System.Drawing.Size(114, 20);
+            this.OnAddtb.TabIndex = 3;
             // 
             // label1
             // 
@@ -86,21 +91,16 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Должность";
             // 
-            // OnAddtb
+            // OnAddcmb
             // 
-            this.OnAddtb.Location = new System.Drawing.Point(80, 56);
-            this.OnAddtb.Name = "OnAddtb";
-            this.OnAddtb.Size = new System.Drawing.Size(114, 20);
-            this.OnAddtb.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Логин";
+            this.OnAddcmb.FormattingEnabled = true;
+            this.OnAddcmb.Items.AddRange(new object[] {
+            "Менеджер",
+            "Бухгалтер"});
+            this.OnAddcmb.Location = new System.Drawing.Point(80, 19);
+            this.OnAddcmb.Name = "OnAddcmb";
+            this.OnAddcmb.Size = new System.Drawing.Size(114, 21);
+            this.OnAddcmb.TabIndex = 1;
             // 
             // label3
             // 
@@ -145,6 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(470, 138);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

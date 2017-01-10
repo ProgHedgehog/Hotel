@@ -39,9 +39,11 @@
             // 
             this.PasswordTb.Location = new System.Drawing.Point(141, 79);
             this.PasswordTb.Name = "PasswordTb";
+            this.PasswordTb.PasswordChar = '*';
             this.PasswordTb.Size = new System.Drawing.Size(150, 20);
             this.PasswordTb.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.PasswordTb, "Может состоять из цифр и букв. Знаки препинания запрещены");
+            this.toolTip1.SetToolTip(this.PasswordTb, "Не менее 5 символов. Может состоять из цифр и букв. Знаки препинания запрещены");
+            this.PasswordTb.TextChanged += new System.EventHandler(this.PasswordTb_TextChanged);
             // 
             // label1
             // 
@@ -55,6 +57,7 @@
             // 
             // Changepassbut
             // 
+            this.Changepassbut.Enabled = false;
             this.Changepassbut.Location = new System.Drawing.Point(141, 121);
             this.Changepassbut.Name = "Changepassbut";
             this.Changepassbut.Size = new System.Drawing.Size(150, 37);
@@ -67,6 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(409, 261);
             this.Controls.Add(this.Changepassbut);
             this.Controls.Add(this.label1);

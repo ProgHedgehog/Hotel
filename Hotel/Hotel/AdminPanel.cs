@@ -39,7 +39,19 @@ namespace Hotel
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string role = OnAddcmb.Text;
+            string role="";
+            if (OnAddcmb.Text == "Менеджер")
+            {
+                role = "manager";
+            }
+            else
+            {
+                if (OnAddcmb.Text == "Бухгалтер")
+                {
+                    role = "Bookkeeper";
+                }
+            }
+            
             string login = OnAddtb.Text;
             sql.Open();
             string check_name = "insert into Registration(ID, Login, Password, Role) Values(null,'"+login+"','','"+role+"')";
